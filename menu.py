@@ -69,7 +69,6 @@ while place_order:
             print("Item # | Item name                | Price")
             print("-------|--------------------------|-------")
             for key, value in menu[menu_category_name].items():
-                # Check if the menu item is a dictionary to handle differently
                 if type(value) is dict:
                     for key2, value2 in value.items():
                         num_item_spaces = 24 - len(key + key2) - 3
@@ -89,13 +88,12 @@ while place_order:
                         "Price": value
                     }
                     i += 1
-            order_number = input('\nSelect a number for your order:')
+            order_number = input('\nSelect a number for your order: ')
             if isinstance(order_number, str) and int(order_number) in menu_items:
                 order_number = int(order_number)
-                print(menu_items[order_number])
                 item_name = menu_items[order_number]
                 try:
-                    quantity_to_order = int(input('Please select the quantity amount:'))
+                    quantity_to_order = int(input('Please select the quantity amount: '))
                     if quantity_to_order <= 0:
                         raise ValueError
                 except ValueError:
@@ -108,8 +106,6 @@ while place_order:
                     'Quantity': item_name['Quantity']
                 })
                 print(f'Your {menu_items[order_number]['Item name']} order has {quantity_to_order} quantities')
-
-
         else:
             print(f"{menu_category} was not a menu option.")
     else:
@@ -136,6 +132,5 @@ if customer_order:
         num_item_spaces = 28 - len(customer_item['Item name']) - 3
         item_spaces = " " * num_item_spaces
         print(f"{customer_item['Item name']}{item_spaces} | ${round(customer_item['Price'], 2)} | {customer_item['Quantity']}")
-
     total_order_price = sum([order['Price'] * order['Quantity'] for order in customer_order])
     print(f'Total Price:${total_order_price}')
