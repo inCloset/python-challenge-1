@@ -110,9 +110,9 @@ if customer_order:
         num_price_spaces = 8 - len(str(customer_item["Price"])) - 3
         price_spaces = " " * num_price_spaces
         print(
-            f"{customer_item['Item name']}{item_spaces} | ${round(customer_item['Price'], 2)}{price_spaces} | {customer_item['Quantity']}"
+            f"{customer_item.get('Item name')}{item_spaces} | ${round(customer_item.get('Price'), 2)}{price_spaces} | {customer_item.get('Quantity')}"
         )
     total_order_price = sum(
         [order["Price"] * order["Quantity"] for order in customer_order]
     )
-    print(f"Total Price:${total_order_price}")
+    print(f"Total Price:${round(total_order_price)}")
