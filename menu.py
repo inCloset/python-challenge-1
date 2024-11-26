@@ -74,13 +74,13 @@ while place_order:
                 menu_items[order_number].setdefault("Quantity", quantity_to_order)
                 customer_order.append(
                     {
-                        "Item name": item_name["Item name"],
-                        "Price": item_name["Price"],
-                        "Quantity": item_name["Quantity"],
+                        "Item name": item_name.get('Item name'),
+                        "Price": item_name.get('Price'),
+                        "Quantity": item_name.get('Quantity'),
                     }
                 )
                 print(
-                    f'Your {menu_items[order_number]['Item name']} order has {quantity_to_order} quantities'
+                    f'Your {menu_items[order_number].get('Item name')} order has {quantity_to_order} quantities'
                 )
         else:
             print(f"{menu_category} was not a menu option.")
