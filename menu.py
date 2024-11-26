@@ -107,8 +107,10 @@ if customer_order:
     for customer_item in customer_order:
         num_item_spaces = 28 - len(customer_item["Item name"]) - 3
         item_spaces = " " * num_item_spaces
+        num_price_spaces = 8 - len(str(customer_item["Price"])) - 3
+        price_spaces = " " * num_price_spaces
         print(
-            f"{customer_item['Item name']}{item_spaces} | ${round(customer_item['Price'], 2)}| {customer_item['Quantity']}"
+            f"{customer_item['Item name']}{item_spaces} | ${round(customer_item['Price'], 2)}{price_spaces} | {customer_item['Quantity']}"
         )
     total_order_price = sum(
         [order["Price"] * order["Quantity"] for order in customer_order]
