@@ -115,4 +115,4 @@ if customer_order:
     total_order_price = sum(
         [order["Price"] * order["Quantity"] for order in customer_order]
     )
-    print(f"Total Price:${round(total_order_price)}")
+    print(f"Total Price:${round(total_order_price,2)}")
